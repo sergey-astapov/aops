@@ -9,6 +9,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Fallback {
 
+  String FALLBACK_ANNOTATION = "@annotation(io.aops.annotations.Fallback)";
+
   Type type() default Type.Log;
 
   enum Type {

@@ -8,6 +8,9 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Instrumentation {
+
+  String INSTRUMENTATION_ANNOTATION = "@annotation(io.aops.annotations.Instrumentation)";
+
   interface TimerRegistry<T> {
     T timer(Class<?> clazz, String... names);
   }

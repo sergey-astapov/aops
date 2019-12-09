@@ -27,7 +27,7 @@ public class FallbackAspect {
     this.fallbackFunction = fallbackFunction;
   }
 
-  @Around("@annotation(io.aops.annotations.Fallback)")
+  @Around(Fallback.FALLBACK_ANNOTATION)
   public Object around(ProceedingJoinPoint point) throws Throwable {
     try {
       return point.proceed();

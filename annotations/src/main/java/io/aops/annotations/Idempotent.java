@@ -9,6 +9,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Idempotent {
 
+  String IDEMPOTENT_ANNOTATION = "@annotation(io.aops.annotations.Idempotent)";
+
   @FunctionalInterface
   interface IsDuplicateFunction {
 

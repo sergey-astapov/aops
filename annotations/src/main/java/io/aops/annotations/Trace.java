@@ -7,4 +7,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Trace {}
+public @interface Trace {
+
+  String TRACE_ANNOTATION = "@annotation(io.aops.annotations.Trace)";
+}

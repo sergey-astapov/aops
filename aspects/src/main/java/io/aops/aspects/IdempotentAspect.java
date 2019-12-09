@@ -2,6 +2,7 @@ package io.aops.aspects;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
+import io.aops.annotations.Idempotent;
 import io.aops.annotations.Idempotent.IsDuplicateFunction;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -19,7 +20,7 @@ public class IdempotentAspect {
     this.isDuplicateFunction = isDuplicateFunction;
   }
 
-  @Around("@annotation(io.aops.annotations.Idempotent)")
+  @Around(Idempotent.IDEMPOTENT_ANNOTATION)
   public Object around(ProceedingJoinPoint point) throws Throwable {
     if (isDuplicateFunction.apply(point.getArgs())) {
       LOG.info("No need to proceed");
@@ -29,7 +30,7 @@ public class IdempotentAspect {
     LOG.info("No entries found, proceed");
 
     Object proceed = point.proceed();
-    
+
     return proceed;
   }
 }

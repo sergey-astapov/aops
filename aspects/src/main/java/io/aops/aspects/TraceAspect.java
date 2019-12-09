@@ -2,6 +2,7 @@ package io.aops.aspects;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
+import io.aops.annotations.Trace;
 import java.util.Collection;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -13,7 +14,7 @@ public class TraceAspect {
 
   private final static Logger LOG = getLogger(TraceAspect.class);
 
-  @Around("@annotation(io.aops.annotations.Trace)")
+  @Around(Trace.TRACE_ANNOTATION)
   public Object around(ProceedingJoinPoint point) throws Throwable {
     String signature = point.getSignature().toShortString();
     LOG.info("{} with args: {}", signature, (Object) point.getArgs());
