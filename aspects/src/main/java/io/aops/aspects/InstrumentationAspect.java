@@ -19,8 +19,7 @@ public class InstrumentationAspect {
 
   @Around(Instrumentation.INSTRUMENTATION_ANNOTATION)
   public Object around(ProceedingJoinPoint point) throws Throwable {
-    try (final Context ctx = registry
-        .timer(point.getTarget().getClass(), point.getSignature().getName()).time()) {
+    try (final Context ctx = registry.timer(point.getTarget().getClass(), point.getSignature().getName()).time()) {
       return point.proceed();
     }
   }
